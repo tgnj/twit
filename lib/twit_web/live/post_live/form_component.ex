@@ -10,18 +10,10 @@ defmodule TwitWeb.PostLive.FormComponent do
       <.header>
         <%= @title %>
       </.header>
-      <.simple_form
-        for={@form}
-        id="post-form"
-        phx-target={@myself}
-        phx-change="validate"
-        phx-submit="save"
-      >
-        <.input field={@form[:body]} type="text" label="Body" />
-        <:actions>
-          <.button phx-disable-with="Saving...">Save Post</.button>
-        </:actions>
-      </.simple_form>
+      <.form for={@form} id="post-form" phx-target={@myself} phx-change="validate" phx-submit="save">
+        <.input type="text" field={@form[:body]} label="Body" />
+        <.button type="submit" phx-disable-with="Saving...">Save Post</.button>
+      </.form>
     </div>
     """
   end

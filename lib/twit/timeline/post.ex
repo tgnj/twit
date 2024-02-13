@@ -4,9 +4,9 @@ defmodule Twit.Timeline.Post do
 
   schema "posts" do
     field :body, :string
-    field :username, :string
-    field :likes_count, :integer
-    field :reposts_count, :integer
+    field :username, :string, default: "terence_goh"
+    field :likes_count, :integer, default: 0
+    field :reposts_count, :integer, default: 0
 
     timestamps(type: :utc_datetime)
   end
@@ -14,7 +14,8 @@ defmodule Twit.Timeline.Post do
   @doc false
   def changeset(post, attrs) do
     post
-    |> cast(attrs, [:username, :body, :likes_count, :reposts_count])
-    |> validate_required([:username, :body, :likes_count, :reposts_count])
+    |> cast(attrs, [:body])
+    |> validate_required([:body])
+    |> validate_length(:body, min: 3, max: 240)
   end
 end
