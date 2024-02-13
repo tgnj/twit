@@ -6,6 +6,8 @@ defmodule TwitWeb.PostLive.Index do
 
   @impl true
   def mount(_params, _session, socket) do
+    if connected?(socket), do: Timeline.subscribe()
+
     {:ok, stream(socket, :posts, Timeline.list_posts())}
   end
 
@@ -43,5 +45,15 @@ defmodule TwitWeb.PostLive.Index do
     {:ok, _} = Timeline.delete_post(post)
 
     {:noreply, stream_delete(socket, :posts, post)}
+  end
+
+  @impl true
+  def handle_info({:post_created, post}, socket) do
+    {:noreply, stream_insert(socket, :posts, post)}
+  end
+
+  @impl true
+  def handle_info({:post_updated, post}, socket) do
+    {:noreply, stream_insert(socket, :posts, post)}
   end
 end
