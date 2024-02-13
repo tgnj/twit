@@ -16,6 +16,6 @@ defmodule Twit.Timeline.Post do
     post
     |> cast(attrs, [:body])
     |> validate_required([:body])
-    |> validate_length(:body, min: 3, max: 240)
+    |> validate_length(:body, min: 3, max: 300)
   end
 end

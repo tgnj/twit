@@ -7,7 +7,7 @@
   </:actions>
 </.header>
 
-<div id="posts" phx-update="prepend">
+<div id="posts" phx-update="stream">
   <%= for { id, post } <- @streams.posts do %>
     <.live_component module={TwitWeb.PostLive.PostComponent} id={id} post={post} />
   <% end %>

@@ -996,6 +996,14 @@ select {
   margin-top: 0.25rem;
 }
 
+.mr-10 {
+  margin-right: 2.5rem;
+}
+
+.mr-1 {
+  margin-right: 0.25rem;
+}
+
 .block {
   display: block;
 }
@@ -1443,6 +1451,10 @@ select {
 
 .pl-16 {
   padding-left: 4rem;
+}
+
+.pl-10 {
+  padding-left: 2.5rem;
 }
 
 .text-left {
